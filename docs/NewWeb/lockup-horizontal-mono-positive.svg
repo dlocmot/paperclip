@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" width="860" height="320">
+  <rect width="860" height="320" fill="#FFFFFF"/>
+  <g transform="translate(120,45) scale(0.72)">
+    <g transform="translate(40,40) scale(1.0)">
+  <rect x="0" y="0" width="240" height="240" rx="44" fill="#0B1320"/>
+  <g fill="#FFFFFF" opacity="0.92"><rect x="44" y="0" width="16" height="28" rx="3"/><rect x="44" y="212" width="16" height="28" rx="3"/><rect x="78" y="0" width="16" height="28" rx="3"/><rect x="78" y="212" width="16" height="28" rx="3"/><rect x="112" y="0" width="16" height="28" rx="3"/><rect x="112" y="212" width="16" height="28" rx="3"/><rect x="146" y="0" width="16" height="28" rx="3"/><rect x="146" y="212" width="16" height="28" rx="3"/><rect x="180" y="0" width="16" height="28" rx="3"/><rect x="180" y="212" width="16" height="28" rx="3"/><rect x="0" y="44" width="28" height="16" rx="3"/><rect x="212" y="44" width="28" height="16" rx="3"/><rect x="0" y="78" width="28" height="16" rx="3"/><rect x="212" y="78" width="28" height="16" rx="3"/><rect x="0" y="112" width="28" height="16" rx="3"/><rect x="212" y="112" width="28" height="16" rx="3"/><rect x="0" y="146" width="28" height="16" rx="3"/><rect x="212" y="146" width="28" height="16" rx="3"/><rect x="0" y="180" width="28" height="16" rx="3"/><rect x="212" y="180" width="28" height="16" rx="3"/></g>
+  <rect x="48" y="48" width="144" height="144" rx="20" fill="#FFFFFF"/>
+</g>
+    <g font-family="'Space Grotesk','Inter','Helvetica Neue',Arial,sans-serif" text-anchor="middle" fill="#0B1320">
+      <text x="565" y="172" font-size="92" font-weight="700">HOLOTECH</text>
+      <text x="565" y="212" font-size="29" font-weight="500" fill="#0B1320">DISRUPTIVE TECHNOLOGY</text>
+    </g>
+  </g>
+</svg>

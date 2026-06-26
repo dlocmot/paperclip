@@ -11,12 +11,14 @@ export interface BackupRetentionPolicy {
   dailyDays: (typeof DAILY_RETENTION_PRESETS)[number];
   weeklyWeeks: (typeof WEEKLY_RETENTION_PRESETS)[number];
   monthlyMonths: (typeof MONTHLY_RETENTION_PRESETS)[number];
+  maxCount?: number;
 }
 
 export const DEFAULT_BACKUP_RETENTION: BackupRetentionPolicy = {
   dailyDays: 7,
   weeklyWeeks: 4,
   monthlyMonths: 1,
+  maxCount: 5,
 };
 
 export interface InstanceGeneralSettings {

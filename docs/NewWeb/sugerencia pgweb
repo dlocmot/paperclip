@@ -1,0 +1,80 @@
+# Holotech (holotech.pe) — Ultimate Creative & Production Brief: SpaceX-Grade Redesign
+
+Act as a world-class creative director and lead WebGL / Front-End Engineer (think of a top-tier design studio brought in to build an award-winning digital experience). Your mission is to produce the architecture, conceptual strategy, and complete production-ready code for an avant-garde, award-winning, single-page story-driven website for "Holotech" (https://holotech.pe). 
+
+The goal is to move entirely away from standard corporate layouts or traditional "boxy" web design. We are aiming for a radical, cinematic, and deeply immersive experience inspired directly by SpaceX (https://www.spacex.com), adapted 100% to Holotech's deep tech identity. 
+
+Every visual effect must earn its place: spectacle in service of credibility and conversion, engineering precision as art.
+
+---
+
+## 1. BRAND SYSTEM & MANDATORY TOKENS (Verbatim)
+
+### Palette & Contrast Discipline (WCAG AA):
+*   Principal Fondo Institucional: #0B1320 (Dark absolute void; do not use pure #000000 for main canvas background except specific high-contrast micro-details).
+*   Teal Primario: #3AD1C4 (Primary accent, interactive states, chip/hologram glow, focus rings, signal pulses).
+*   Amarillo Señal: #F5C518 (Wordmark & secondary CTAs/highlights only — used sparingly as a spark, never as wallpaper).
+*   Gris Texto: #9CA888 (Secondary reading or metadata).
+*   Long-form body text is NEVER teal or yellow. Body on dark = white or soft off-white (#F7F7F2).
+
+### Typography:
+*   Display / Headings: 'Space Grotesk' (Weights 500/700 via self-hosted @fontsource). Tight tracking on massive text. Make the type an aggressive feature (oversized headlines, confident scale jumps), not a neutral delivery vehicle.
+*   Technical Data / Code / Sub-elements: 'JetBrains Mono' (or clean system Mono for low-level tech stats).
+
+---
+
+## 2. SPACEX-GRADE ART DIRECTION (The Anti-Cliché Rule)
+
+Do not ship a generic "black page + one glowing color + centered paragraph." The distinctiveness must come from an "Aerospace / Quantum Computing Instrument" aesthetic:
+
+1.  LESS TEXT, MASSIVE IMPACT: Zero fluff or long marketing paragraphs. Use short, sharp, heavy value propositions floating over a computational void.
+2.  GRID & RETICLE SYSTEM: Incorporate ultra-thin lines (1px layout lines using #3AD1C4 at very low opacity), subtle coordinate markers, and geometric accents derived from the brand manual.
+3.  FULL-SCREEN SNAP (100vh): Implement an uncompromising full-page snapping layout (using GSAP ScrollTrigger/Observer). Each section transition must feel like a deliberate, cinematic stage change.
+
+---
+
+## 3. THE SIGNATURE ELEMENT: THE HOLOGRAPHIC CHIP DIE
+
+The entire narrative centers around the concept: "From silicon to strategy — a signal traveling through a chip."
+*   Hero Canvas: A real-time WebGL "holographic silicon die" (a 3D interpretation of Holotech's chip icon). It features an iridescent teal (#3AD1C4) rim/fresnel glow, subtle holographic scanlines, and slight pointer parallax.
+*   Scroll-Driven Transformation: As the user scrolls into the service stack, the 3D chip dynamically rotates, expands, or "opens" in layers. It shoots teal signal pulses outward along 1px circuit paths to reveal data and text elements dynamically.
+*   Performance Fallback: Gate the Three.js scene behind capability checks (prefers-reduced-motion, low-data). If triggered, replace it with a beautiful high-end static poster or a hardware-accelerated CSS/SVG chip execution with a soft gradient sheen.
+
+---
+
+## 4. NARRATIVE LAYOUT & SERVICE ARCHITECTURE (Spanish es-PE UI Copy)
+
+The core structure consists of high-impact sections mapped across 100vh stages:
+1.  *Stage 01: Hero (The Thesis).* The massive WebGL Holographic Die + a razor-sharp headline (e.g., "Ingeniería tecnológica para decisiones de alto impacto."). Tagline: "DISRUPTIVE TECHNOLOGY". Primary CTA: Agenda una consultoría (Teal). Secondary CTA: Explora la plataforma (Yellow).
+2.  *Stage 02: El Stack (The 5 Capabilities).* The 3D chip opens. As the user scrolls, specific sectors of the die light up, pulsing data along paths toward minimal text blocks representing the 5 service lines:
+    *   Redes empresariales (Enterprise infra, MikroTik/RouterOS, VLANs, high-availability).
+    *   Ciberseguridad (Vulnerability assessment, OWASP, hardening).
+    *   Proyectos CTI / I+D+i (Structured for CONCYTEC and Ley 30309 tax incentives).
+    *   IA aplicada — AGENTICA (Autonomous agents; give this sub-brand a distinct visual accent in the layout).
+    *   Pertinencia educativa (MINEDU / SUNEDU compliance framework).
+3.  *Stage 03: Pruebas / Credibilidad.* Technical metrics, OWASP methodologies, and anonymized case snippets displayed like an engineering dashboard (using JetBrains Mono for hard values). No fabricated statistics — if specific client data is missing, use an explicit TODO(stakeholder) token.
+4.  *Stage 04: Omnichannel Lead Capture.* A high-end, clean conversion form designed to interface smoothly with Holotech's existing CRM/lead endpoints, alongside WhatsApp/email touchpoints.
+
+---
+
+## 5. TECHNICAL STACK & ENGINEERING STANDARDS
+
+This is a frontend redesign integrated into an existing Astro 6 + Cloudflare Workers repo (dlocmot/dinamo-web). You must strictly respect the edge-runtime constraints:
+
+*   *Astro Component Architecture:* Astro ships zero JS by default. All GSAP/Three.js logic must live inside client-side <script> tags or properly hydrated client islands (client:visible).
+*   *Edge Runtime Safety:* NEVER import GSAP or Three.js in component frontmatter or SSR scope. It will break the Cloudflare Worker build. Keep the worker bundle lean; load Three.js dynamically via client-side import().
+*   *View Transitions Lifecycle:* Ensure GSAP ScrollTriggers and Three.js renderers/geometries are correctly re-initialized on astro:page-load and completely disposed of on astro:before-swap to prevent memory leaks and double-binding.
+*   *Backend & Content Integrity:* Preserve all existing CRM endpoints, magic-link auth, and Cloudflare bindings (D1/R2/Resend). Do not break server functionality. Keep all real contact data (RUC, address, emails) and legal disclosures fully intact.
+
+---
+
+## 6. DELIVERABLES REQUIRED
+
+1.  *UI/UX Spatial Strategy:* Technical breakdown of the 3D chip's rotation, scaling, and layer-separation steps across the 100vh scroll-snapped sequence.
+2.  *Production-Ready Astro Component Code:* A master layout or core structure (Hero.astro and ServiceStack.astro) featuring:
+    *   Strict Tailwind CSS/Tokens setup matching the brand tokens exactly.
+    *   The complete client-side JavaScript block importing and wiring GSAP, ScrollTrigger, and a boilerplate Three.js initialization with a basic custom shader/vertex setup for the holographic die mesh.
+    *   Clean, accessible HTML elements designed for smooth full-page layout snapping.
+3.  *Performance Optimization Plan:* Precise techniques to ensure this immersive site keeps an optimized LCP (<2.5s) and maintains a flawless 60 FPS on desktop and mobile.
+
+Exert absolute aesthetic restraint everywhere except on the central signature interaction. Show me what a world-class, uncompromising digital instrument looks like. Proceed.

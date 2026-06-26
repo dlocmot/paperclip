@@ -7,7 +7,7 @@
  */
 
 const DARK_BG = { r: 24, g: 24, b: 27 }; // zinc-900 (#18181b)
-const LIGHT_BG = { r: 255, g: 255, b: 255 }; // white
+const LIGHT_BG = { r: 255, g: 255, b: 221 }; // #FFFFDD
 
 export function hexToRgb(hex: string): { r: number; g: number; b: number } | null {
   const match = /^#?([0-9a-f]{3,6})$/i.exec(hex.trim());

@@ -24,7 +24,7 @@ function normalizeGeneralSettings(raw: unknown): InstanceGeneralSettings {
       keyboardShortcuts: parsed.data.keyboardShortcuts ?? false,
       feedbackDataSharingPreference:
         parsed.data.feedbackDataSharingPreference ?? DEFAULT_FEEDBACK_DATA_SHARING_PREFERENCE,
-      backupRetention: parsed.data.backupRetention ?? DEFAULT_BACKUP_RETENTION,
+      backupRetention: { ...DEFAULT_BACKUP_RETENTION, ...(parsed.data.backupRetention ?? {}) },
     };
   }
   return {

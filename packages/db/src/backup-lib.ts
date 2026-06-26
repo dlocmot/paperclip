@@ -11,6 +11,7 @@ export type BackupRetentionPolicy = {
   dailyDays: number;
   weeklyWeeks: number;
   monthlyMonths: number;
+  maxCount?: number;
 };
 
 export type RunDatabaseBackupOptions = {
@@ -114,11 +115,6 @@ function monthKey(date: Date): string {
 function pruneOldBackups(backupDir: string, retention: BackupRetentionPolicy, filenamePrefix: string): number {
   if (!existsSync(backupDir)) return 0;
 
-  const now = Date.now();
-  const dailyCutoff = now - Math.max(1, retention.dailyDays) * 24 * 60 * 60 * 1000;
-  const weeklyCutoff = now - Math.max(1, retention.weeklyWeeks) * 7 * 24 * 60 * 60 * 1000;
-  const monthlyCutoff = now - Math.max(1, retention.monthlyMonths) * 30 * 24 * 60 * 60 * 1000;
-
   type BackupEntry = { name: string; fullPath: string; mtimeMs: number };
   const entries: BackupEntry[] = [];
 
@@ -130,8 +126,23 @@ function pruneOldBackups(backupDir: string, retention: BackupRetentionPolicy, fi
     entries.push({ name, fullPath, mtimeMs: stat.mtimeMs });
   }
 
-  // Sort newest first so the first entry per week/month bucket is the one we keep
+  // Sort newest first
   entries.sort((a, b) => b.mtimeMs - a.mtimeMs);
+
+  // Count-based retention: keep only the newest maxCount backups
+  if (retention.maxCount != null && retention.maxCount > 0) {
+    const toDelete = entries.slice(retention.maxCount);
+    for (const entry of toDelete) {
+      unlinkSync(entry.fullPath);
+    }
+    return toDelete.length;
+  }
+
+  // Time-based tiered retention
+  const now = Date.now();
+  const dailyCutoff = now - Math.max(1, retention.dailyDays) * 24 * 60 * 60 * 1000;
+  const weeklyCutoff = now - Math.max(1, retention.weeklyWeeks) * 7 * 24 * 60 * 60 * 1000;
+  const monthlyCutoff = now - Math.max(1, retention.monthlyMonths) * 30 * 24 * 60 * 60 * 1000;
 
   const keepWeekBuckets = new Set<string>();
   const keepMonthBuckets = new Set<string>();
